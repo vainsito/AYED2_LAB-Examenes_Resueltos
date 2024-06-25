@@ -72,7 +72,15 @@ int main(int argc, char *argv[]) {
     movielist_dump(movielist, length);
 
     /* check if it is sorted */
-    // -- Completar --
+    for (unsigned int i = 0u; i + 1< length; i++) {
+        if (!goes_before(movielist[i], movielist[i + 1])){
+            printf("The list is not sorted\n");\
+            // Imprimo hasta que posicion esta ordenado el array
+            printf("The array is sorted until position: %d\n", array_sorted_until(movielist, length));
+            return (EXIT_FAILURE);
+        }
+    }
+    printf("The list is sorted\n");
 
     return (EXIT_SUCCESS);
 }
