@@ -29,10 +29,19 @@ void array_dump(LayoverTable a) {
     }
   }
 }
-
+// Debo contar los pasajeros que arribaron en la hora h y los que estan por partir en la hora h
 unsigned int passengers_amount_in_airport (LayoverTable a, unsigned int h) {
-  /* COMPLETAR */
-  return 0;
+  unsigned int passengers = 0;
+  for (unsigned int i = 0; i < h+1; i++){
+    if (i != h){
+      passengers += a[i][0].passengers_amount;
+      passengers -= a[i][1].passengers_amount;
+    } else {
+      passengers += a[i][0].passengers_amount;
+      passengers += a[i][1].passengers_amount;
+    }
+  }
+  return passengers;
 }
 
 
@@ -46,16 +55,18 @@ void array_from_file(LayoverTable array, const char *filepath) {
   }
 
   char code;
-  int i=0;
-  while (/* COMPLETAR: lectura completa de todos los datos */) {
-    int res = fscanf(/* COMPLETAR: lectura de codigo de vuelo */);
+  while (!feof(file)) {
+    int res = fscanf(file, "_%c_ ", &code);
     if (res != 1) {
       fprintf(stderr, "Invalid file.\n");
       exit(EXIT_FAILURE);
     }
     /* COMPLETAR: Generar y guardar ambos Flight en el array multidimensional */
-    Flight flight_arrival =   /* completar... */;
-    Flight flight_departure = /* completar... */;
+    Flight flight_arrival =  flight_from_file(file, code);
+    Flight flight_departure = flight_from_file(file, code);
+
+    array[flight_arrival.hour-1][0] = flight_arrival;
+    array[flight_departure.hour-1][1] = flight_departure;
   }
   fclose(file);
 }

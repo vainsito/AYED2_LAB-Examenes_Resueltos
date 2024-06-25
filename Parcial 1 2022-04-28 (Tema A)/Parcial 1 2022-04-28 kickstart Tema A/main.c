@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
     /* shows the data on the screen */
     array_dump(array);
 
-    printf("\nAmount of passengers at %u:00 : %u\n", 10, /* COMPLETAR */);
+    printf("\nAmount of passengers at %u:00 : %u\n", 10, passengers_amount_in_airport(array, 10));
 
     return (EXIT_SUCCESS);
 }
