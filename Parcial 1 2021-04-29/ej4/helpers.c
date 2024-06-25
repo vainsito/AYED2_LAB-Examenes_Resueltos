@@ -67,16 +67,23 @@ void movielist_dump(movie_t movielist[], unsigned int length) {
 static unsigned int process_FILE(FILE *file, movie_t movielist[], unsigned int max_size) {
     unsigned int i = 0u;
     while (!feof(file)) {
-        int readed=0;
-        process_string(file, SEPARATOR, movielist[i].name, MAX_NAME_LENGTH + 1u);
-        process_string(file, SEPARATOR, movielist[i].director, MAX_DIRECTOR_LENGTH + 1u);
-        readed = fscanf(file, " %u  %f  %f ", &movielist[i].runtime,
-                                              &movielist[i].avg_rating,
-                                              &movielist[i].n_votes);
-        readed = readed;
-        ++i;
+        if (i > max_size){
+            fprintf(stderr, "Array is too long! Max size reached: %u \n", max_size);
+            exit(EXIT_FAILURE);
+        }else{
+            int readed=0;
+            process_string(file, SEPARATOR, movielist[i].name, MAX_NAME_LENGTH + 1u);
+            process_string(file, SEPARATOR, movielist[i].director, MAX_DIRECTOR_LENGTH + 1u);
+            readed = fscanf(file, " %u  %f  %f ", &movielist[i].runtime,
+                                                &movielist[i].avg_rating,
+                                                &movielist[i].n_votes);
+            if (readed != 3){
+                fprintf(stderr, "Invalid Array. Error reading file\n");
+                exit(EXIT_FAILURE);
+            }
+            ++i;
+        } 
     }
-    max_size = max_size;
     return (i);
 }
 

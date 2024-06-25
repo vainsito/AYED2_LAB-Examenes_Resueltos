@@ -10,8 +10,7 @@
 
 
 bool goes_before(movie_t s1, movie_t s2) {
-    // -- Completar --
-    return false;
+    return s1.n_votes <= s2.n_votes;
 }
 
 bool array_is_sorted(movie_t movielist[], unsigned int size) {
