@@ -73,10 +73,10 @@ int main(int argc, char *argv[]) {
     /* show the data on the screen */
     array_dump(array);
 
-    char *team_name = "...";
-    //scanf("Nombre de equipo a buscar: %s", );
-
-    printf("\nTotal Maximo de /* COMPLETAR */ \n", /* COMPLETAR */ );
+    char team_name[255]; // Usa un array de caracteres en lugar de un puntero.
+    printf("Ingrese el nombre del equipo a buscar:\n");
+    scanf("%255s", team_name); // Lee hasta 255 caracteres para evitar desbordamiento de buffer.
+    printf("\nTotal Maximo del equipo %s es: %f \n", team_name, total_track_points_per_team(array, team_name));
 
     return (EXIT_SUCCESS);
 }

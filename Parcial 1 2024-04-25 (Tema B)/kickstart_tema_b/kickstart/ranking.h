@@ -6,7 +6,7 @@
 #ifndef _RANKING_H
 #define _RANKING_H
 
-#define EXPECTED_RANKING_FILE_FORMAT  /* COMPLETAR */
+#define EXPECTED_RANKING_FILE_FORMAT "%d %d %d %s %s %f " /* COMPLETAR */
 
 #define NO_PLAYERS 100
 #define TYPES 2

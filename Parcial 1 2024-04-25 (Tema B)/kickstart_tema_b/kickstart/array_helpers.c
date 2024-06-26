@@ -30,20 +30,27 @@ void array_from_file(RankingTable array, const char *filepath) {
     type_t type;
 
     int i = 0;
-    while (/* COMPLETAR */) {
+    while (!feof(file)) {
 
-        int res = fscanf(file, /* COMPLETAR */);
-
+        int res = fscanf(file, "@%u ", &type);
         if (res != 1) {
             fprintf(stderr, "Invalid ranking type.\n");
             exit(EXIT_FAILURE);
         }
 
         /* COMPLETAR: Leer Ranking */
-        Ranking ranking_row = /* completar... */
-
+        Ranking ranking_row = ranking_from_file(file);
         /* COMPLETAR: guardar ranking en array */
-        /* completar... */ = ranking_row;
+        // Chequeo que la posicion en el ranking sea menor al tamaño del ranking, si no es asi no lo guardo
+        if (ranking_row.pos < NO_PLAYERS) {
+            array[ranking_row.pos][type] = ranking_row;
+        }
+        // Este if es para chequear que no haya mas rankings que jugadores * tipos
+        if (i > NO_PLAYERS * TYPES) {
+            fprintf(stderr, "Invalid file, number of rankings is invalid.\n");
+            exit(EXIT_FAILURE);
+        }
+        
         i++;
     }
     fclose(file);
