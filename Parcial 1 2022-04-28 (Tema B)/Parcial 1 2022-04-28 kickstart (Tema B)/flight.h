@@ -5,7 +5,7 @@
 
 #ifndef _FLIGHT_H
 #define _FLIGHT_H
-#define EXPECTED_FLIGHT_FILE_FORMAT /* COMPLETAR*/
+#define EXPECTED_FLIGHT_FILE_FORMAT " %u %u "
 
 typedef enum { boxes, letters } item_t;
 

@@ -13,7 +13,11 @@ Flight flight_from_file(FILE* file, char code, item_t type)
     flight.code = code;
     flight.type = type;
 
-    /* COMPLETAR */
-
+    int res = fscanf(file, EXPECTED_FLIGHT_FILE_FORMAT, &flight.hour, &flight.items_amount);
+    if(res != AMOUNT_OF_FLIGHT_VARS)
+    {
+        fprintf(stderr, "Invalid file. Error charging flight data\n");
+        exit(EXIT_FAILURE);
+    }
     return flight;
 }
