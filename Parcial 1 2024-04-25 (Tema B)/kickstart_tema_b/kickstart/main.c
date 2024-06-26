@@ -73,6 +73,9 @@ int main(int argc, char *argv[]) {
     /* show the data on the screen */
     array_dump(array);
 
+
+    // Aca lo que hice es establecer un tamanio maximmo para el nombre del equipo, para evitar desbordamiento de buffer
+    // Como lo habian dado los profe daba segfault por un problema del scanf xd
     char team_name[255]; // Usa un array de caracteres en lugar de un puntero.
     printf("Ingrese el nombre del equipo a buscar:\n");
     scanf("%255s", team_name); // Lee hasta 255 caracteres para evitar desbordamiento de buffer.
