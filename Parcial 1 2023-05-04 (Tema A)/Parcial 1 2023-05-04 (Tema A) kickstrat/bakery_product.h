@@ -5,7 +5,7 @@
 
 #ifndef _BAKERY_PRODUCT_H
 #define _BAKERY_PRODUCT_H
-#define EXPECTED_PRODUCT_FILE_FORMAT //COMPLETAR
+#define EXPECTED_PRODUCT_FILE_FORMAT "(%u,%u) (%u,%u) (%u,%u) %u "//COMPLETAR
 typedef enum
 {
     low,
