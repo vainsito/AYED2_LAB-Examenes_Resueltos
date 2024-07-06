@@ -20,7 +20,7 @@ $(TEST) : test.o position-test.o list.o
 	$(CC) $(CFLAGS) -o $(TEST) $^
 
 run_tests: $(TEST)
-	valgrind --show-reachable=yes --leak-check=full ./$(TEST)
+	valgrind --show-reachable=yes --leak-check=full --track-origins=yes ./$(TEST)
 
 run_main: $(TARGET)
 	valgrind --show-reachable=yes --leak-check=full ./$(TARGET)
